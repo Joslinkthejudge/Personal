@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Usuarios</h1>
+    <ul>
+    {% for user in our_users %}
+        <li>Nombre: {{ user.name }} <a href="{{ url_for('update_users', id=user.id) }}">Editar</a> <a href="{{ url_for('delete_users', id=user.id) }}"> Borrar</a></li>
+        <li>Apellido: {{ user.lastname }}</li>
+        <li>Tipo de Usuario: {{ user.user_type }}</li>
+        <li>Email: {{ user.email }}</li>
+        <li>Contraseña: {{ user.password_hash }}</li>
+        <li>CI: {{ user.ci }}</li>
+        <li>Telefono: {{ user.phone }}</li>
+        <hr>
+    {% endfor %}
+    </ul>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% if current_user.is_authenticated %}
+    <h1>Historias Medicas</h1>
+    <ul>
+    {% for history in our_histories %}
+        <li>Nombre: {{ history.name }} <a href="{{ url_for('update_history', id=history.id) }}">Editar</a> <a href="{{ url_for('delete_medic_histories', id=history.id) }}"> Borrar</a></li>
+        <li>Apellido: {{ history.lastname }}</li>
+        <li>Edad: {{ history.age }}</li>
+        <li>CI: {{ history.ci }}</li>
+        <li>Email: {{ history.email }}</li>
+        <li>Telefono: {{ history.phone }}</li>
+        <li>Direccion: {{ history.direction }}</li>
+        <li>Motivo de consulta: {{ history.motive }}</li>
+        <li>Enfermedades Actuales: {{ history.diseases }}</li>
+        <li>Cuadro medico: {{ history.background }}</li>
+        <li>Examen Fisico: {{ history.f_exam }}</li>
+        <li>Diagnostico: {{ history.diagnostic }}</li>
+        <li>Terapia: {{ history.therapy }}</li>
+        <hr>
+    {% endfor %}
+    </ul>
+{% else %}
+    <h2>Debes tener una cuenta para entrar a esta pagina</h2>  
+    <p>Por favor sigue el siguiente <a href="{{url_for('login')}}">link</a> para crear una cuenta</p>  
+{% endif %}    
+{% endblock %}
